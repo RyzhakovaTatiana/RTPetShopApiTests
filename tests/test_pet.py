@@ -82,7 +82,6 @@ class TestPet:
                 jsonschema.validate(response_json, PET_SCHEMA)
 
         with allure.step("Проверка параметров питомца в ответе"):
-
             assert response_json["id"] == payload["id"], "id питомца не совпадает с ожидаемым"
             assert response_json["name"] == payload["name"], "name питомца не совпадает с ожидаемым"
             assert response_json["category"]["id"] == payload["category"]["id"], "id категории не совпадает с ожидаемым"
