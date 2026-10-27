@@ -10,7 +10,6 @@ def create_pet():
                 "status": "available"}
     response = requests.post(f"{BASE_URL}/pet", json=payload)
     assert response.status_code == 200, "Не удалось создать питомца в фикстуре"
-    print("фикстура create_pet")
-    #return response.json() #получение ответа без удаления питомца
-    yield response.json()
-    requests.delete(f"{BASE_URL}/pet/{payload["id"]}")
+    return response.json() #получение ответа без удаления питомца
+    #yield response.json() #получение ответа с удалением данных о питомце
+    #requests.delete(f"{BASE_URL}/pet/{payload["id"]}") # отправка запроса на удаление данных о питомце

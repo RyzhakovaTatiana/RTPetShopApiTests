@@ -105,14 +105,14 @@ class TestPet:
             assert response.status_code == 200, "Код ответа не совпал с ожидаемым"
             assert response.json()["id"] == pet_id, "id питомца не совпадает с ожидаемым"
 
-    @allure.title("Получение информации о питомце по name")
+    @allure.title("Проверка имени питомца в ответе GET /pet/{petId}")
     def test_get_pet_name(self, create_pet):
-        with allure.step("Получение name созданного питомца"):
+        with allure.step("Получение id и name созданного питомца"):
             pet_id = create_pet["id"]
             pet_name = create_pet["name"]
-        with allure.step("Отправка запроса на получение информации о питомце по name"):
+        with allure.step("Отправка запроса на получение информации о питомце по ID"):
             response = requests.get(f"{BASE_URL}/pet/{pet_id}")
-        with allure.step("Проверка статуса ответа и данных питомца"):
+        with allure.step("Проверка статуса ответа и имени питомца"):
             assert response.status_code == 200, "Код ответа не совпал с ожидаемым"
             assert response.json()["name"] == pet_name
 
